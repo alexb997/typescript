@@ -3,9 +3,9 @@ let message = "Hello, TypeScript!"; // inferred as string
 let count = 42; // inferred as number
 let isActive = true; // inferred as boolean
 
-function add(a: number, b: number) {
-    return a + b;
-}
+// function add(a: number, b: number) {
+//     return a + b;
+// }
 
 //Assertions
 let someValue: unknown = "This is a string";
