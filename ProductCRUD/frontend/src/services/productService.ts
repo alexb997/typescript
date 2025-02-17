@@ -12,6 +12,11 @@ export const addProduct = async (name: string, price: number, quantity: number) 
     return res.data;
 };
 
+export const updateProduct = async (id: number, name: string, price: number, quantity: number) => {
+    const res = await axios.put(`${API_URL}/${id}`, { name, price, quantity });
+    return res.data;
+};
+
 export const removeProduct = async (id: number) => {
     await axios.delete(`${API_URL}/${id}`);
 };

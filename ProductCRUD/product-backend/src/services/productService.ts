@@ -22,6 +22,17 @@ class ProductService {
         }
         return false;
     }
+
+    updateProduct(id: number, name: string, price: number, quantity: number): Product | null {
+        const product = this.products.find(p => p.id === id);
+        if (!product) return null;
+        
+        product.name = name;
+        product.price = price;
+        product.quantity = quantity;
+        
+        return product;
+    }
 }
 
 export default new ProductService();

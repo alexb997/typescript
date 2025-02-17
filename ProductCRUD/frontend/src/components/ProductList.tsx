@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import { getProducts, removeProduct } from "../services/productService";
+import { Product } from "../types/product";
 
-type Product = {
-    id: number;
-    name: string;
-    price: number;
-    quantity: number;
-};
-
-const ProductList = () => {
+const ProductList = ({ onEdit }: { onEdit: (product: Product) => void }) => {
     const [products, setProducts] = useState<Product[]>([]);
 
     useEffect(() => {
@@ -32,6 +26,7 @@ const ProductList = () => {
                 {products.map(p => (
                     <li key={p.id}>
                         {p.name} - ${p.price} (Qty: {p.quantity}) 
+                        <button onClick={() => onEdit(p)}>Edit</button>
                         <button onClick={() => handleRemove(p.id)}>Remove</button>
                     </li>
                 ))}

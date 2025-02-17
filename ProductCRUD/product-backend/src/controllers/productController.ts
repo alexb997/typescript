@@ -24,3 +24,20 @@ export const removeProduct: RequestHandler = (req, res): void => {
         res.status(404).json({ message: "Product not found" });
     }
 };
+
+export const updateProduct: RequestHandler = (req, res): void => {
+    const { id } = req.params;
+    const { name, price, quantity } = req.body;
+
+    if (!name || price == null || quantity == null) {
+        res.status(400).json({ message: "Invalid product data" });
+        return;
+    }
+
+    const updatedProduct = productService.updateProduct(parseInt(id), name, price, quantity);
+    if (!updatedProduct) {
+        res.status(404).json({ message: "Product not found" });
+    } else {
+        res.json(updatedProduct);
+    }
+};
